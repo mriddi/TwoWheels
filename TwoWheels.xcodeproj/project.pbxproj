@@ -1,0 +1,394 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		24056AB5168038070036D33D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24056AB4168038070036D33D /* UIKit.framework */; };
+		24056AB7168038070036D33D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24056AB6168038070036D33D /* Foundation.framework */; };
+		24056AB9168038070036D33D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24056AB8168038070036D33D /* CoreGraphics.framework */; };
+		24056ABF168038070036D33D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 24056ABD168038070036D33D /* InfoPlist.strings */; };
+		24056AC1168038070036D33D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 24056AC0168038070036D33D /* main.m */; };
+		24056AC5168038070036D33D /* BIDAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 24056AC4168038070036D33D /* BIDAppDelegate.m */; };
+		24056AC7168038070036D33D /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 24056AC6168038070036D33D /* Default.png */; };
+		24056AC9168038070036D33D /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 24056AC8168038070036D33D /* Default@2x.png */; };
+		24056ACB168038070036D33D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 24056ACA168038070036D33D /* Default-568h@2x.png */; };
+		24056AD8168038760036D33D /* Cursor.png in Resources */ = {isa = PBXBuildFile; fileRef = 24056AD2168038760036D33D /* Cursor.png */; };
+		24056AD9168038760036D33D /* NDARotationGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 24056AD4168038760036D33D /* NDARotationGestureRecognizer.m */; };
+		24056ADA168038760036D33D /* NDAMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 24056AD6168038760036D33D /* NDAMainViewController.m */; };
+		24056ADC168038A30036D33D /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24056ADB168038A30036D33D /* Storyboard.storyboard */; };
+		243E037719ABAFAD003A29A3 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 243E037619ABAFAD003A29A3 /* QuartzCore.framework */; };
+		244A3ADD19B4802D00D1A786 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 244A3ADC19B4802D00D1A786 /* AudioToolbox.framework */; };
+		244A3ADF19B4862D00D1A786 /* Icon-painting-120х120.png in Resources */ = {isa = PBXBuildFile; fileRef = 244A3ADE19B4862D00D1A786 /* Icon-painting-120х120.png */; };
+		244A3AE119B868E900D1A786 /* Help.png in Resources */ = {isa = PBXBuildFile; fileRef = 244A3AE019B868E900D1A786 /* Help.png */; };
+		244A3AE419B8712300D1A786 /* Storyboard-iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 244A3AE319B8712300D1A786 /* Storyboard-iPad.storyboard */; };
+		24671D5E19B08AA70016059D /* NDAMenuGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 24671D5D19B08AA70016059D /* NDAMenuGestureRecognizer.m */; };
+		246A9E7719B079D0009203C7 /* eracerClear.png in Resources */ = {isa = PBXBuildFile; fileRef = 246A9E6C19B079D0009203C7 /* eracerClear.png */; };
+		246A9E7819B079D0009203C7 /* eracerEmpty.png in Resources */ = {isa = PBXBuildFile; fileRef = 246A9E6D19B079D0009203C7 /* eracerEmpty.png */; };
+		246A9E7919B079D0009203C7 /* eracerEracer.png in Resources */ = {isa = PBXBuildFile; fileRef = 246A9E6E19B079D0009203C7 /* eracerEracer.png */; };
+		246A9E7A19B079D0009203C7 /* eracerLoad.png in Resources */ = {isa = PBXBuildFile; fileRef = 246A9E6F19B079D0009203C7 /* eracerLoad.png */; };
+		246A9E7B19B079D0009203C7 /* eracerSave.png in Resources */ = {isa = PBXBuildFile; fileRef = 246A9E7019B079D0009203C7 /* eracerSave.png */; };
+		246A9E7C19B079D0009203C7 /* penClear.png in Resources */ = {isa = PBXBuildFile; fileRef = 246A9E7119B079D0009203C7 /* penClear.png */; };
+		246A9E7D19B079D0009203C7 /* penEmpty.png in Resources */ = {isa = PBXBuildFile; fileRef = 246A9E7219B079D0009203C7 /* penEmpty.png */; };
+		246A9E7E19B079D0009203C7 /* penLoad.png in Resources */ = {isa = PBXBuildFile; fileRef = 246A9E7319B079D0009203C7 /* penLoad.png */; };
+		246A9E7F19B079D0009203C7 /* penPen.png in Resources */ = {isa = PBXBuildFile; fileRef = 246A9E7419B079D0009203C7 /* penPen.png */; };
+		246A9E8019B079D0009203C7 /* penSave.png in Resources */ = {isa = PBXBuildFile; fileRef = 246A9E7519B079D0009203C7 /* penSave.png */; };
+		246A9E8119B079D0009203C7 /* Wheel.png in Resources */ = {isa = PBXBuildFile; fileRef = 246A9E7619B079D0009203C7 /* Wheel.png */; };
+		2477AAD219AF2D1200128855 /* NDAMath.m in Sources */ = {isa = PBXBuildFile; fileRef = 2477AAD119AF2D1200128855 /* NDAMath.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		24056AB0168038070036D33D /* TwoWheels.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwoWheels.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		24056AB4168038070036D33D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		24056AB6168038070036D33D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		24056AB8168038070036D33D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		24056ABC168038070036D33D /* TwoWheels-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TwoWheels-Info.plist"; sourceTree = "<group>"; };
+		24056ABE168038070036D33D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		24056AC0168038070036D33D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		24056AC2168038070036D33D /* TwoWheels-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TwoWheels-Prefix.pch"; sourceTree = "<group>"; };
+		24056AC3168038070036D33D /* BIDAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BIDAppDelegate.h; sourceTree = "<group>"; };
+		24056AC4168038070036D33D /* BIDAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BIDAppDelegate.m; sourceTree = "<group>"; };
+		24056AC6168038070036D33D /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		24056AC8168038070036D33D /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		24056ACA168038070036D33D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		24056AD2168038760036D33D /* Cursor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cursor.png; sourceTree = "<group>"; };
+		24056AD3168038760036D33D /* NDARotationGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDARotationGestureRecognizer.h; sourceTree = "<group>"; };
+		24056AD4168038760036D33D /* NDARotationGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NDARotationGestureRecognizer.m; sourceTree = "<group>"; };
+		24056AD5168038760036D33D /* NDAMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDAMainViewController.h; sourceTree = "<group>"; };
+		24056AD6168038760036D33D /* NDAMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NDAMainViewController.m; sourceTree = "<group>"; };
+		24056ADB168038A30036D33D /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
+		243E037619ABAFAD003A29A3 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		244A3ADC19B4802D00D1A786 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		244A3ADE19B4862D00D1A786 /* Icon-painting-120х120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-painting-120х120.png"; sourceTree = "<group>"; };
+		244A3AE019B868E900D1A786 /* Help.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Help.png; sourceTree = "<group>"; };
+		244A3AE319B8712300D1A786 /* Storyboard-iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Storyboard-iPad.storyboard"; sourceTree = "<group>"; };
+		24671D5C19B08AA70016059D /* NDAMenuGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDAMenuGestureRecognizer.h; sourceTree = "<group>"; };
+		24671D5D19B08AA70016059D /* NDAMenuGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NDAMenuGestureRecognizer.m; sourceTree = "<group>"; };
+		246A9E6C19B079D0009203C7 /* eracerClear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = eracerClear.png; sourceTree = "<group>"; };
+		246A9E6D19B079D0009203C7 /* eracerEmpty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = eracerEmpty.png; sourceTree = "<group>"; };
+		246A9E6E19B079D0009203C7 /* eracerEracer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = eracerEracer.png; sourceTree = "<group>"; };
+		246A9E6F19B079D0009203C7 /* eracerLoad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = eracerLoad.png; sourceTree = "<group>"; };
+		246A9E7019B079D0009203C7 /* eracerSave.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = eracerSave.png; sourceTree = "<group>"; };
+		246A9E7119B079D0009203C7 /* penClear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = penClear.png; sourceTree = "<group>"; };
+		246A9E7219B079D0009203C7 /* penEmpty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = penEmpty.png; sourceTree = "<group>"; };
+		246A9E7319B079D0009203C7 /* penLoad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = penLoad.png; sourceTree = "<group>"; };
+		246A9E7419B079D0009203C7 /* penPen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = penPen.png; sourceTree = "<group>"; };
+		246A9E7519B079D0009203C7 /* penSave.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = penSave.png; sourceTree = "<group>"; };
+		246A9E7619B079D0009203C7 /* Wheel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Wheel.png; sourceTree = "<group>"; };
+		2477AAD019AF2D1200128855 /* NDAMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDAMath.h; sourceTree = "<group>"; };
+		2477AAD119AF2D1200128855 /* NDAMath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NDAMath.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		24056AAD168038070036D33D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				244A3ADD19B4802D00D1A786 /* AudioToolbox.framework in Frameworks */,
+				243E037719ABAFAD003A29A3 /* QuartzCore.framework in Frameworks */,
+				24056AB5168038070036D33D /* UIKit.framework in Frameworks */,
+				24056AB7168038070036D33D /* Foundation.framework in Frameworks */,
+				24056AB9168038070036D33D /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		24056AA5168038070036D33D = {
+			isa = PBXGroup;
+			children = (
+				24056ABA168038070036D33D /* Classes */,
+				24056ABB168038070036D33D /* Supporting Files */,
+				24056AB3168038070036D33D /* Frameworks */,
+				24056AB1168038070036D33D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		24056AB1168038070036D33D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				24056AB0168038070036D33D /* TwoWheels.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		24056AB3168038070036D33D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				244A3ADC19B4802D00D1A786 /* AudioToolbox.framework */,
+				243E037619ABAFAD003A29A3 /* QuartzCore.framework */,
+				24056AB4168038070036D33D /* UIKit.framework */,
+				24056AB6168038070036D33D /* Foundation.framework */,
+				24056AB8168038070036D33D /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		24056ABA168038070036D33D /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				24671D5C19B08AA70016059D /* NDAMenuGestureRecognizer.h */,
+				24671D5D19B08AA70016059D /* NDAMenuGestureRecognizer.m */,
+				24056AD3168038760036D33D /* NDARotationGestureRecognizer.h */,
+				24056AD4168038760036D33D /* NDARotationGestureRecognizer.m */,
+				24056AD5168038760036D33D /* NDAMainViewController.h */,
+				24056AD6168038760036D33D /* NDAMainViewController.m */,
+				24056AC3168038070036D33D /* BIDAppDelegate.h */,
+				24056AC4168038070036D33D /* BIDAppDelegate.m */,
+				2477AAD019AF2D1200128855 /* NDAMath.h */,
+				2477AAD119AF2D1200128855 /* NDAMath.m */,
+			);
+			name = Classes;
+			path = TwoWheels;
+			sourceTree = "<group>";
+		};
+		24056ABB168038070036D33D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				24426DFA168612D900EC2179 /* Pictures */,
+				24056ADB168038A30036D33D /* Storyboard.storyboard */,
+				244A3AE319B8712300D1A786 /* Storyboard-iPad.storyboard */,
+				24056ABC168038070036D33D /* TwoWheels-Info.plist */,
+				24056ABD168038070036D33D /* InfoPlist.strings */,
+				24056AC0168038070036D33D /* main.m */,
+				24056AC2168038070036D33D /* TwoWheels-Prefix.pch */,
+				24056AC6168038070036D33D /* Default.png */,
+				24056AC8168038070036D33D /* Default@2x.png */,
+				24056ACA168038070036D33D /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			path = TwoWheels;
+			sourceTree = "<group>";
+		};
+		24426DFA168612D900EC2179 /* Pictures */ = {
+			isa = PBXGroup;
+			children = (
+				244A3AE019B868E900D1A786 /* Help.png */,
+				246A9E6C19B079D0009203C7 /* eracerClear.png */,
+				246A9E6D19B079D0009203C7 /* eracerEmpty.png */,
+				246A9E6E19B079D0009203C7 /* eracerEracer.png */,
+				246A9E6F19B079D0009203C7 /* eracerLoad.png */,
+				246A9E7019B079D0009203C7 /* eracerSave.png */,
+				246A9E7119B079D0009203C7 /* penClear.png */,
+				246A9E7219B079D0009203C7 /* penEmpty.png */,
+				246A9E7319B079D0009203C7 /* penLoad.png */,
+				246A9E7419B079D0009203C7 /* penPen.png */,
+				246A9E7519B079D0009203C7 /* penSave.png */,
+				246A9E7619B079D0009203C7 /* Wheel.png */,
+				24056AD2168038760036D33D /* Cursor.png */,
+				244A3ADE19B4862D00D1A786 /* Icon-painting-120х120.png */,
+			);
+			name = Pictures;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		24056AAF168038070036D33D /* TwoWheels */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 24056ACE168038070036D33D /* Build configuration list for PBXNativeTarget "TwoWheels" */;
+			buildPhases = (
+				24056AAC168038070036D33D /* Sources */,
+				24056AAD168038070036D33D /* Frameworks */,
+				24056AAE168038070036D33D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TwoWheels;
+			productName = TooWheels;
+			productReference = 24056AB0168038070036D33D /* TwoWheels.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		24056AA7168038070036D33D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = BID;
+				LastUpgradeCheck = 0450;
+				ORGANIZATIONNAME = "Пользователь";
+			};
+			buildConfigurationList = 24056AAA168038070036D33D /* Build configuration list for PBXProject "TwoWheels" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 24056AA5168038070036D33D;
+			productRefGroup = 24056AB1168038070036D33D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				24056AAF168038070036D33D /* TwoWheels */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		24056AAE168038070036D33D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				246A9E8019B079D0009203C7 /* penSave.png in Resources */,
+				246A9E7F19B079D0009203C7 /* penPen.png in Resources */,
+				244A3ADF19B4862D00D1A786 /* Icon-painting-120х120.png in Resources */,
+				24056ABF168038070036D33D /* InfoPlist.strings in Resources */,
+				24056AC7168038070036D33D /* Default.png in Resources */,
+				24056AC9168038070036D33D /* Default@2x.png in Resources */,
+				246A9E7819B079D0009203C7 /* eracerEmpty.png in Resources */,
+				246A9E7919B079D0009203C7 /* eracerEracer.png in Resources */,
+				246A9E7D19B079D0009203C7 /* penEmpty.png in Resources */,
+				24056ACB168038070036D33D /* Default-568h@2x.png in Resources */,
+				244A3AE119B868E900D1A786 /* Help.png in Resources */,
+				246A9E8119B079D0009203C7 /* Wheel.png in Resources */,
+				24056AD8168038760036D33D /* Cursor.png in Resources */,
+				244A3AE419B8712300D1A786 /* Storyboard-iPad.storyboard in Resources */,
+				246A9E7B19B079D0009203C7 /* eracerSave.png in Resources */,
+				246A9E7A19B079D0009203C7 /* eracerLoad.png in Resources */,
+				246A9E7C19B079D0009203C7 /* penClear.png in Resources */,
+				24056ADC168038A30036D33D /* Storyboard.storyboard in Resources */,
+				246A9E7719B079D0009203C7 /* eracerClear.png in Resources */,
+				246A9E7E19B079D0009203C7 /* penLoad.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		24056AAC168038070036D33D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				24056AC1168038070036D33D /* main.m in Sources */,
+				24056AC5168038070036D33D /* BIDAppDelegate.m in Sources */,
+				24671D5E19B08AA70016059D /* NDAMenuGestureRecognizer.m in Sources */,
+				2477AAD219AF2D1200128855 /* NDAMath.m in Sources */,
+				24056AD9168038760036D33D /* NDARotationGestureRecognizer.m in Sources */,
+				24056ADA168038760036D33D /* NDAMainViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		24056ABD168038070036D33D /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				24056ABE168038070036D33D /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		24056ACC168038070036D33D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		24056ACD168038070036D33D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		24056ACF168038070036D33D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TwoWheels/TwoWheels-Prefix.pch";
+				INFOPLIST_FILE = "TwoWheels/TwoWheels-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		24056AD0168038070036D33D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TwoWheels/TwoWheels-Prefix.pch";
+				INFOPLIST_FILE = "TwoWheels/TwoWheels-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		24056AAA168038070036D33D /* Build configuration list for PBXProject "TwoWheels" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				24056ACC168038070036D33D /* Debug */,
+				24056ACD168038070036D33D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		24056ACE168038070036D33D /* Build configuration list for PBXNativeTarget "TwoWheels" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				24056ACF168038070036D33D /* Debug */,
+				24056AD0168038070036D33D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 24056AA7168038070036D33D /* Project object */;
+}

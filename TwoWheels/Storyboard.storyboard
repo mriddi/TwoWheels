@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="oXe-Wu-WL0">
+    <dependencies>
+        <deployment defaultVersion="1792" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+    </dependencies>
+    <scenes>
+        <!--Main View Controller-->
+        <scene sceneID="oYR-Nb-L4W">
+            <objects>
+                <viewController id="oXe-Wu-WL0" customClass="NDAMainViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tps-UE-PKT">
+                        <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="Zqk-Ib-21W">
+                                <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="redraw" image="Wheel.png" id="E3F-PG-mgb">
+                                <rect key="frame" x="20" y="187" width="113" height="113"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="redraw" image="Wheel.png" id="I8A-i4-xjd">
+                                <rect key="frame" x="435" y="187" width="113" height="113"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="Cursor.png" id="ilc-wr-hko">
+                                <rect key="frame" x="282" y="191" width="4" height="4"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="xb9-sH-bbx">
+                                <rect key="frame" x="164" y="96" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="cursor" destination="ilc-wr-hko" id="FhO-n9-Q7Y"/>
+                        <outlet property="leftWheel" destination="E3F-PG-mgb" id="1W5-yc-huW"/>
+                        <outlet property="menuView" destination="xb9-sH-bbx" id="zsw-ax-xFI"/>
+                        <outlet property="paintingImageView" destination="Zqk-Ib-21W" id="42Y-zp-OPP"/>
+                        <outlet property="rightWheel" destination="I8A-i4-xjd" id="63H-xE-ECT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KSE-At-id6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="55" y="-17"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Cursor.png" width="3" height="3"/>
+        <image name="Wheel.png" width="226" height="226"/>
+    </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination"/>
+    </simulatedMetricsContainer>
+</document>
