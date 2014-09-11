@@ -35,7 +35,7 @@
     eracerSet=NO;
     screenBounds=self.view.bounds;
     centerPoint = CGPointMake(screenBounds.size.width/2,screenBounds.size.height/2);
-    paintToPoint = centerPoint;
+    drawToPoint = centerPoint;
     lastPoint= centerPoint;
     [self setCursorPosition:centerPoint];
     gestureRecognizerLeft = [[NDARotationGestureRecognizer alloc] init];
@@ -122,6 +122,8 @@
         CGPoint touchA = [gestureRecognizerMenu locationOfTouch:0 inView:self.view];
         CGPoint touchB = [gestureRecognizerMenu locationOfTouch:1 inView:self.view];
         CGFloat distance = distanceBetweenPoints(touchA, touchB);
+        
+        NSLog(@"%f", distance);
         
         if (distance < distanceTrigger) {
             if (gestureRecognizer == gestureRecognizerLeft) {
@@ -215,23 +217,23 @@
         bufferAngleRight+= angle;
         if (bufferAngleRight>=degreeInPoint) {
             bufferAngleRight=0;
-            paintToPoint=[self checkForScreenOutDown:paintToPoint];
+            drawToPoint=[self checkForScreenOutDown:drawToPoint];
         } else if (bufferAngleRight<=-degreeInPoint){
             bufferAngleRight=0;
-            paintToPoint=[self checkForScreenOutUp:paintToPoint];
+            drawToPoint=[self checkForScreenOutUp:drawToPoint];
         }}
     else{
         leftWheel.transform = CGAffineTransformRotate(leftWheel.transform,angle *  M_PI / 180);
         bufferAngleLeft+= angle;
         if (bufferAngleLeft>=degreeInPoint) {
             bufferAngleLeft=0;
-            paintToPoint=[self checkForScreenOutRight:paintToPoint];
+            drawToPoint=[self checkForScreenOutRight:drawToPoint];
         } else if (bufferAngleLeft<=-degreeInPoint){
             bufferAngleLeft=0;
-            paintToPoint=[self checkForScreenOutLeft:paintToPoint];
+            drawToPoint=[self checkForScreenOutLeft:drawToPoint];
         }}
-    [self paintToPoint:paintToPoint];
-    [self setCursorPosition:paintToPoint];
+    [self drawToPoint:drawToPoint];
+    [self setCursorPosition:drawToPoint];
 }
 
 #pragma mark - Painting methods
@@ -247,7 +249,7 @@
     cursor.frame = CGRectMake(currentPoint.x-cursor.frame.size.width/2, currentPoint.y-cursor.frame.size.height/2, cursor.frame.size.width, cursor.frame.size.height);
 }
 
--(void) paintToPoint : (CGPoint) point{
+-(void) drawToPoint : (CGPoint) point{
     UIGraphicsBeginImageContext(CGSizeMake(568, 320));
     [paintingImageView.image drawInRect:(CGRect){.origin.x = 0.0f, .origin.y = 0.0f, 568, 320}];
     
@@ -300,7 +302,7 @@
     bufferAngleLeft = 0;
     bufferAngleRight = 0;
     lastPoint= centerPoint;
-    paintToPoint = centerPoint;
+    drawToPoint = centerPoint;
     paintingImageView.image=nil;
     [UIView animateWithDuration:0.5 animations:^{[self setCursorPosition:centerPoint];}];
 }
@@ -312,10 +314,11 @@
     UIGraphicsEndImageContext();
     UIImageWriteToSavedPhotosAlbum(myScreenshoot, nil, nil, nil );
     
-    NSURL *fileURL = [NSURL URLWithString:@"/System/Library/Audio/UISounds/photoShutter.cuf"];
+    NSURL *fileURL = [NSURL URLWithString:@"/System/Library/Audio/UISounds/Modern/camera_shutter_burst.caf"];
     SystemSoundID soundID;
     AudioServicesCreateSystemSoundID((__bridge_retained  CFURLRef)fileURL, &soundID);
     AudioServicesPlaySystemSound(soundID);
+    AudioServicesDisposeSystemSoundID(soundID);
     
     UIView * flash = [[UIView alloc] initWithFrame:self.view.bounds];
     flash.backgroundColor = [UIColor whiteColor];

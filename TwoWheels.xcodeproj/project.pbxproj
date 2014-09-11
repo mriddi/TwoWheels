@@ -214,6 +214,11 @@
 				CLASSPREFIX = BID;
 				LastUpgradeCheck = 0450;
 				ORGANIZATIONNAME = "Пользователь";
+				TargetAttributes = {
+					24056AAF168038070036D33D = {
+						DevelopmentTeam = WKVSSJ4PH6;
+					};
+				};
 			};
 			buildConfigurationList = 24056AAA168038070036D33D /* Build configuration list for PBXProject "TwoWheels" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -343,12 +348,15 @@
 		24056ACF168038070036D33D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TwoWheels/TwoWheels-Prefix.pch";
 				INFOPLIST_FILE = "TwoWheels/TwoWheels-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -357,11 +365,14 @@
 		24056AD0168038070036D33D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TwoWheels/TwoWheels-Prefix.pch";
 				INFOPLIST_FILE = "TwoWheels/TwoWheels-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};

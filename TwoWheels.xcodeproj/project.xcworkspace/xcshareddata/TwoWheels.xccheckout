@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>7EFAEFE5-21E1-422B-B932-614A31D2B842</string>
+	<key>IDESourceControlProjectName</key>
+	<string>TwoWheels</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>6A6691A8-C15D-4CF7-A4A9-85E781F0BE3E</key>
+		<string>https://github.com/mriddi/TwoWheels.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>TwoWheels.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>6A6691A8-C15D-4CF7-A4A9-85E781F0BE3E</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/mriddi/TwoWheels.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>6A6691A8-C15D-4CF7-A4A9-85E781F0BE3E</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>6A6691A8-C15D-4CF7-A4A9-85E781F0BE3E</string>
+			<key>IDESourceControlWCCName</key>
+			<string>TwoWheels</string>
+		</dict>
+	</array>
+</dict>
+</plist>

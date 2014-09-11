@@ -15,7 +15,7 @@
 #define cursorHideShowTime 1
 #define controllersHideShowTime 2
 #define moveFactor 2
-#define distanceTrigger 100
+#define distanceTrigger 150
 
 
 @interface NDAMainViewController : UIViewController <NDARotationGestureRecognizerDelegate,NDAMenuGestureRecognizerDelegate,UINavigationControllerDelegate, UIImagePickerControllerDelegate>{
@@ -23,7 +23,7 @@
     CGFloat bufferAngleRight;
     CGPoint centerPoint;
     CGPoint lastPoint;
-    CGPoint paintToPoint;
+    CGPoint drawToPoint;
     NDARotationGestureRecognizer *gestureRecognizerLeft;
     NDARotationGestureRecognizer *gestureRecognizerRight;
     NDAMenuGestureRecognizer *gestureRecognizerMenu;
