@@ -159,8 +159,8 @@
     leftWheel.center = CGPointMake([gestureRecognizerLeft locationInView:self.view].x- leftWheel.bounds.size.width/2, [gestureRecognizerLeft locationInView:self.view].y);
     leftWheel.transform = CGAffineTransformMakeRotation(0);
     [gestureRecognizerLeft setMidPoint: leftWheel.center
-                           innerRadius: leftWheel.frame.size.width/2 / outToInRadius
-                           outerRadius: leftWheel.frame.size.width/2 + outRadiusExtender];
+                           innerRadius: inRadius
+                           outerRadius: outRadius];
 }
 
 -(void) startRight{
@@ -171,8 +171,8 @@
     rightWheel.center = CGPointMake([gestureRecognizerRight locationInView:self.view].x- rightWheel.bounds.size.width/2, [gestureRecognizerRight locationInView:self.view].y);
     rightWheel.transform = CGAffineTransformMakeRotation(0);
     [gestureRecognizerRight setMidPoint: rightWheel.center
-                            innerRadius: rightWheel.frame.size.width/2 / outToInRadius
-                            outerRadius: rightWheel.frame.size.width/2 + outRadiusExtender];
+                            innerRadius: inRadius
+                            outerRadius: outRadius];
 }
 
 - (void) moviedToSector:(Byte)sector{

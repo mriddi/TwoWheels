@@ -10,12 +10,12 @@
 
 
 #define degreeInPoint 2.25
-#define outToInRadius 5
-#define outRadiusExtender 100
+#define inRadius 5
+#define outRadius 100
 #define cursorHideShowTime 1
 #define controllersHideShowTime 2
 #define moveFactor 2
-#define distanceTrigger 150
+#define distanceTrigger 200
 
 
 @interface NDAMainViewController : UIViewController <NDARotationGestureRecognizerDelegate,NDAMenuGestureRecognizerDelegate,UINavigationControllerDelegate, UIImagePickerControllerDelegate>{
