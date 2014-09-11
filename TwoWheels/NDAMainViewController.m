@@ -31,7 +31,6 @@
 -  (void)viewDidAppear:(BOOL)animated{
     bufferAngleLeft = 0;
     bufferAngleRight = 0;
-    myScreenshoot=nil;
     eracerSet=NO;
     screenBounds=self.view.bounds;
     centerPoint = CGPointMake(screenBounds.size.width/2,screenBounds.size.height/2);
@@ -49,7 +48,7 @@
     [self.view addGestureRecognizer:gestureRecognizerMenu];
     
     // Show help
-    if (![@"1" isEqualToString:[[NSUserDefaults standardUserDefaults] objectForKey: @"launches"]]){
+    if (![@"2" isEqualToString:[[NSUserDefaults standardUserDefaults] objectForKey: @"launches"]]){
         [[NSUserDefaults standardUserDefaults] setValue:@"1" forKey:@"launches"];
         [[NSUserDefaults standardUserDefaults] synchronize];
         
@@ -153,21 +152,27 @@
 }
 
 - (void) startLeft {
+    [controllersTimer invalidate];
+    controllersTimer=[NSTimer scheduledTimerWithTimeInterval:controllersHideShowTime target:self selector:@selector(hideControllers) userInfo:nil repeats:NO];
+    
+    [UIView animateWithDuration:0.5 animations:^{leftWheel.alpha = 1;}];
     leftWheel.center = CGPointMake([gestureRecognizerLeft locationInView:self.view].x- leftWheel.bounds.size.width/2, [gestureRecognizerLeft locationInView:self.view].y);
     leftWheel.transform = CGAffineTransformMakeRotation(0);
     [gestureRecognizerLeft setMidPoint: leftWheel.center
                            innerRadius: leftWheel.frame.size.width/2 / outToInRadius
-                           outerRadius: leftWheel.frame.size.width/2 + outRadiusExtender
-                   classInstanceMarker: @"Left"];
+                           outerRadius: leftWheel.frame.size.width/2 + outRadiusExtender];
 }
 
 -(void) startRight{
+    [controllersTimer invalidate];
+    controllersTimer=[NSTimer scheduledTimerWithTimeInterval:controllersHideShowTime target:self selector:@selector(hideControllers) userInfo:nil repeats:NO];
+    
+    [UIView animateWithDuration:0.5 animations:^{rightWheel.alpha = 1;}];
     rightWheel.center = CGPointMake([gestureRecognizerRight locationInView:self.view].x- rightWheel.bounds.size.width/2, [gestureRecognizerRight locationInView:self.view].y);
     rightWheel.transform = CGAffineTransformMakeRotation(0);
     [gestureRecognizerRight setMidPoint: rightWheel.center
                             innerRadius: rightWheel.frame.size.width/2 / outToInRadius
-                            outerRadius: rightWheel.frame.size.width/2 + outRadiusExtender
-                    classInstanceMarker: @"Right"];
+                            outerRadius: rightWheel.frame.size.width/2 + outRadiusExtender];
 }
 
 - (void) moviedToSector:(Byte)sector{
@@ -210,9 +215,8 @@
         [self loadPicture];
 }
 
-- (void) willRotateAndConvert: (CGFloat) angle :(NSString*) classInstanceTag
-{
-    if([classInstanceTag isEqualToString:@"Right"]) {
+- (void) willRotateAndConvert: (CGFloat) angle : (NDARotationGestureRecognizer *) gestureRecognizer{
+    if(gestureRecognizer == gestureRecognizerRight) {
         rightWheel.transform = CGAffineTransformRotate(rightWheel.transform,angle *  M_PI / 180);
         bufferAngleRight+= angle;
         if (bufferAngleRight>=degreeInPoint) {
@@ -250,15 +254,15 @@
 }
 
 -(void) drawToPoint : (CGPoint) point{
-    UIGraphicsBeginImageContext(CGSizeMake(568, 320));
-    [paintingImageView.image drawInRect:(CGRect){.origin.x = 0.0f, .origin.y = 0.0f, 568, 320}];
+    UIGraphicsBeginImageContext(self.view.bounds.size);
+    [paintingImageView.image drawInRect: self.view.bounds];
     
     CGContextMoveToPoint(UIGraphicsGetCurrentContext(), lastPoint.x, lastPoint.y);
     CGContextAddLineToPoint(UIGraphicsGetCurrentContext(), point.x, point.y);
     
     CGContextSetLineWidth(UIGraphicsGetCurrentContext(), moveFactor );
     if (eracerSet) 
-        CGContextSetRGBStrokeColor(UIGraphicsGetCurrentContext(), 0.886 , 0.917 , 0.776 , 1.0);
+        CGContextSetRGBStrokeColor(UIGraphicsGetCurrentContext(), 1.0, 1.0, 1.0, 1.0);
     else
         CGContextSetRGBStrokeColor(UIGraphicsGetCurrentContext(), 0.0, 0.0, 0.0, 1.0);
     CGContextSetBlendMode(UIGraphicsGetCurrentContext(),kCGBlendModeNormal);
@@ -266,33 +270,6 @@
     paintingImageView.image=UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     lastPoint=point;
-}
-
-#pragma mark - Hidding/showing controllers methods
-
--(void) hideControllers {
-    [UIView animateWithDuration:0.5 animations:^{
-        leftWheel.alpha = 0;
-        rightWheel.alpha = 0;
-    }];
-}
-
--(void) showControllers {
-    [UIView animateWithDuration:0.5 animations:^{
-        leftWheel.alpha = 1;
-        rightWheel.alpha = 1;
-    }];
-}
-
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
-    [super touchesBegan:touches withEvent:event];
-    [self showControllers];
-}
-
-- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{
-    [super touchesMoved:touches withEvent:event];
-    [controllersTimer invalidate];
-    controllersTimer=[NSTimer scheduledTimerWithTimeInterval:controllersHideShowTime target:self selector:@selector(hideControllers) userInfo:nil repeats:NO];
 }
 
 #pragma mark - Menu methods
@@ -308,11 +285,7 @@
 }
 
 - (void) savePicture {
-    UIGraphicsBeginImageContext(self.view.bounds.size);
-    [self.view.layer renderInContext:UIGraphicsGetCurrentContext()];
-    myScreenshoot=UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    UIImageWriteToSavedPhotosAlbum(myScreenshoot, nil, nil, nil );
+    UIImageWriteToSavedPhotosAlbum(paintingImageView.image, nil, nil, nil );
     
     NSURL *fileURL = [NSURL URLWithString:@"/System/Library/Audio/UISounds/Modern/camera_shutter_burst.caf"];
     SystemSoundID soundID;
@@ -355,6 +328,13 @@
 }
 
 #pragma mark - Helper methods
+
+-(void) hideControllers {
+    [UIView animateWithDuration:0.5 animations:^{
+        leftWheel.alpha = 0;
+        rightWheel.alpha = 0;
+    }];
+}
 
 -(CGPoint) checkForScreenOutRight:(CGPoint) checkPoint{
     if (checkPoint.x+1>screenBounds.size.width-moveFactor) {

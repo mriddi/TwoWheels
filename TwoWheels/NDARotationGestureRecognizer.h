@@ -5,10 +5,11 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIGestureRecognizerSubclass.h>
 #import "NDAMath.h"
+@class NDARotationGestureRecognizer;
 
 @protocol NDARotationGestureRecognizerDelegate <UIGestureRecognizerDelegate>
 @required
-- (void) willRotateAndConvert: (CGFloat) angle : (NSString *) classInstanceTag;
+- (void) willRotateAndConvert: (CGFloat) angle : (NDARotationGestureRecognizer *) gestureRecognizer;
 - (BOOL) gestureRecognizerShouldMove:(UIGestureRecognizer *)gestureRecognizer;
 @end
 
@@ -18,14 +19,12 @@
     CGFloat innerRadius;
     CGFloat outerRadius;
     CGFloat cumulatedAngle;
-    NSString * classInstanceMarker;
 }
 
 
 - (void) setMidPoint: (CGPoint) midPoint
             innerRadius: (CGFloat) innerRadius
-            outerRadius: (CGFloat) outerRadius
-    classInstanceMarker: (NSString *) classInstanceMarker;
+            outerRadius: (CGFloat) outerRadius;
 
 - (void)reset;
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event;

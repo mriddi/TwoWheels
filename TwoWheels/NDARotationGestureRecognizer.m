@@ -11,12 +11,10 @@
 - (void) setMidPoint: (CGPoint) _midPoint
             innerRadius: (CGFloat) _innerRadius
             outerRadius: (CGFloat) _outerRadius
-    classInstanceMarker: (NSString *) _classInstanceMarker
 {
     midPoint    = _midPoint;
     innerRadius = _innerRadius;
     outerRadius = _outerRadius;
-    classInstanceMarker=_classInstanceMarker;
 }
 
 #pragma mark - UIGestureRecognizer methods implementation
@@ -57,7 +55,7 @@
         cumulatedAngle += angle;
 
         // call delegate
-        [(id <NDARotationGestureRecognizerDelegate> )self.delegate willRotateAndConvert:angle:classInstanceMarker];
+        [(id <NDARotationGestureRecognizerDelegate> )self.delegate willRotateAndConvert:angle :self];
     }
     else
     {

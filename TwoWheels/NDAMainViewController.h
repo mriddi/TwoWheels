@@ -31,10 +31,9 @@
     BOOL eracerSet;
     NSTimer *controllersTimer;
     NSTimer *cursorTimer;
-    UIImage * myScreenshoot;
 }
 
-@property (strong, nonatomic) IBOutlet UIImageView *helpImageView;
+@property (strong, nonatomic)  UIImageView *helpImageView;
 @property (strong, nonatomic) IBOutlet UIImageView *cursor;
 @property (strong, nonatomic) IBOutlet UIImageView *paintingImageView;
 @property (strong, nonatomic) IBOutlet UIImageView *leftWheel;
