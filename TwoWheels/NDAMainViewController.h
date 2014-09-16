@@ -5,20 +5,19 @@
 
 #import <UIKit/UIKit.h>
 #import "NDARotationGestureRecognizer.h"
-#import "NDAMenuGestureRecognizer.h"
 #import <AudioToolbox/AudioToolbox.h>
 
 
 #define degreeInPoint 2.25
 #define inRadius 5
-#define outRadius 100
+#define outRadius 200
 #define cursorHideShowTime 1
 #define controllersHideShowTime 2
 #define moveFactor 2
 #define distanceTrigger 200
 
 
-@interface NDAMainViewController : UIViewController <NDARotationGestureRecognizerDelegate,NDAMenuGestureRecognizerDelegate,UINavigationControllerDelegate, UIImagePickerControllerDelegate>{
+@interface NDAMainViewController : UIViewController <NDARotationGestureRecognizerDelegate,UINavigationControllerDelegate, UIImagePickerControllerDelegate>{
     CGFloat bufferAngleLeft;
     CGFloat bufferAngleRight;
     CGPoint centerPoint;
@@ -26,12 +25,17 @@
     CGPoint drawToPoint;
     NDARotationGestureRecognizer *gestureRecognizerLeft;
     NDARotationGestureRecognizer *gestureRecognizerRight;
-    NDAMenuGestureRecognizer *gestureRecognizerMenu;
-    CGRect screenBounds;
+    UITapGestureRecognizer *gestureRecognizerMenu;
+    CGSize screenSize;
     BOOL eracerSet;
+    BOOL isShowMenu;
     NSTimer *controllersTimer;
     NSTimer *cursorTimer;
 }
+
+typedef NS_ENUM(NSInteger, MenuSector) {
+    Center,Up,Right,Down,Left
+};
 
 @property (strong, nonatomic)  UIImageView *helpImageView;
 @property (strong, nonatomic) IBOutlet UIImageView *cursor;

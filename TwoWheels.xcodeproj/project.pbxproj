@@ -25,7 +25,6 @@
 		244A3ADF19B4862D00D1A786 /* Icon-painting-120х120.png in Resources */ = {isa = PBXBuildFile; fileRef = 244A3ADE19B4862D00D1A786 /* Icon-painting-120х120.png */; };
 		244A3AE119B868E900D1A786 /* Help.png in Resources */ = {isa = PBXBuildFile; fileRef = 244A3AE019B868E900D1A786 /* Help.png */; };
 		244A3AE419B8712300D1A786 /* Storyboard-iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 244A3AE319B8712300D1A786 /* Storyboard-iPad.storyboard */; };
-		24671D5E19B08AA70016059D /* NDAMenuGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 24671D5D19B08AA70016059D /* NDAMenuGestureRecognizer.m */; };
 		246A9E7719B079D0009203C7 /* eracerClear.png in Resources */ = {isa = PBXBuildFile; fileRef = 246A9E6C19B079D0009203C7 /* eracerClear.png */; };
 		246A9E7819B079D0009203C7 /* eracerEmpty.png in Resources */ = {isa = PBXBuildFile; fileRef = 246A9E6D19B079D0009203C7 /* eracerEmpty.png */; };
 		246A9E7919B079D0009203C7 /* eracerEracer.png in Resources */ = {isa = PBXBuildFile; fileRef = 246A9E6E19B079D0009203C7 /* eracerEracer.png */; };
@@ -65,8 +64,6 @@
 		244A3ADE19B4862D00D1A786 /* Icon-painting-120х120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-painting-120х120.png"; sourceTree = "<group>"; };
 		244A3AE019B868E900D1A786 /* Help.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Help.png; sourceTree = "<group>"; };
 		244A3AE319B8712300D1A786 /* Storyboard-iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Storyboard-iPad.storyboard"; sourceTree = "<group>"; };
-		24671D5C19B08AA70016059D /* NDAMenuGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDAMenuGestureRecognizer.h; sourceTree = "<group>"; };
-		24671D5D19B08AA70016059D /* NDAMenuGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NDAMenuGestureRecognizer.m; sourceTree = "<group>"; };
 		246A9E6C19B079D0009203C7 /* eracerClear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = eracerClear.png; sourceTree = "<group>"; };
 		246A9E6D19B079D0009203C7 /* eracerEmpty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = eracerEmpty.png; sourceTree = "<group>"; };
 		246A9E6E19B079D0009203C7 /* eracerEracer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = eracerEracer.png; sourceTree = "<group>"; };
@@ -131,8 +128,6 @@
 		24056ABA168038070036D33D /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				24671D5C19B08AA70016059D /* NDAMenuGestureRecognizer.h */,
-				24671D5D19B08AA70016059D /* NDAMenuGestureRecognizer.m */,
 				24056AD3168038760036D33D /* NDARotationGestureRecognizer.h */,
 				24056AD4168038760036D33D /* NDARotationGestureRecognizer.m */,
 				24056AD5168038760036D33D /* NDAMainViewController.h */,
@@ -274,7 +269,6 @@
 			files = (
 				24056AC1168038070036D33D /* main.m in Sources */,
 				24056AC5168038070036D33D /* BIDAppDelegate.m in Sources */,
-				24671D5E19B08AA70016059D /* NDAMenuGestureRecognizer.m in Sources */,
 				2477AAD219AF2D1200128855 /* NDAMath.m in Sources */,
 				24056AD9168038760036D33D /* NDARotationGestureRecognizer.m in Sources */,
 				24056ADA168038760036D33D /* NDAMainViewController.m in Sources */,

@@ -28,18 +28,11 @@
     return YES;
 }
 
--  (void)viewDidAppear:(BOOL)animated{
-    bufferAngleLeft = 0;
-    bufferAngleRight = 0;
-    eracerSet=NO;
-    screenBounds=self.view.bounds;
-    centerPoint = CGPointMake(screenBounds.size.width/2,screenBounds.size.height/2);
-    drawToPoint = centerPoint;
-    lastPoint= centerPoint;
-    [self setCursorPosition:centerPoint];
+
+- (void) viewDidLoad{
     gestureRecognizerLeft = [[NDARotationGestureRecognizer alloc] init];
     gestureRecognizerRight = [[NDARotationGestureRecognizer alloc] init];
-    gestureRecognizerMenu = [[NDAMenuGestureRecognizer alloc]init];
+    gestureRecognizerMenu = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onMenuTap:)];
     gestureRecognizerLeft.delegate=self;
     gestureRecognizerRight.delegate=self;
     gestureRecognizerMenu.delegate=self;
@@ -48,16 +41,16 @@
     [self.view addGestureRecognizer:gestureRecognizerMenu];
     
     // Show help
-    if (![@"2" isEqualToString:[[NSUserDefaults standardUserDefaults] objectForKey: @"launches"]]){
+    if (![@"1" isEqualToString:[[NSUserDefaults standardUserDefaults] objectForKey: @"launches"]]){
         [[NSUserDefaults standardUserDefaults] setValue:@"1" forKey:@"launches"];
         [[NSUserDefaults standardUserDefaults] synchronize];
         
-
+        
         _helpImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Help.png"]];
         _helpImageView.frame = self.view.bounds;
         [self.view addSubview:_helpImageView];
         
-        UITapGestureRecognizer * tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onTap:)];
+        UITapGestureRecognizer * tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onHelpTap:)];
         [self.view addGestureRecognizer:tapGestureRecognizer];
         
         gestureRecognizerLeft.enabled = NO;
@@ -65,96 +58,93 @@
         gestureRecognizerMenu.enabled = NO;
         cursor.hidden = YES;
     }else{
+        [cursorTimer invalidate];
         cursorTimer=[NSTimer scheduledTimerWithTimeInterval:cursorHideShowTime target:self selector:@selector(cursorHideShow) userInfo:nil repeats:YES];
     }
 }
 
-#pragma mark - CircularGestureRecognizerDelegate protocol methods
-
--(void) onTap: (UITapGestureRecognizer*) tapGestureRecognizer {
-    [self.helpImageView removeFromSuperview];
-    gestureRecognizerLeft.enabled = YES;
-    gestureRecognizerRight.enabled = YES;
-    gestureRecognizerMenu.enabled = YES;
-    tapGestureRecognizer.enabled = NO;
-    cursor.hidden = NO;
-    cursorTimer=[NSTimer scheduledTimerWithTimeInterval:cursorHideShowTime target:self selector:@selector(cursorHideShow) userInfo:nil repeats:YES];
+-  (void)viewDidAppear:(BOOL)animated{
+    bufferAngleLeft = 0;
+    bufferAngleRight = 0;
+    eracerSet=NO;
+    isShowMenu = NO;
+    screenSize=self.view.bounds.size;
+    centerPoint = CGPointMake(screenSize.width/2,screenSize.height/2);
+    drawToPoint = centerPoint;
+    lastPoint= centerPoint;
+    [self setCursorPosition:centerPoint];
 }
+
+#pragma mark - CircularGestureRecognizerDelegate protocol methods
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer{
     return YES;
 }
 
+
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
+
     if (gestureRecognizer == gestureRecognizerLeft) {
-        if ([touch locationInView:self.view].x < screenBounds.size.width/2) {
+        if ([touch locationInView:self.view].x < screenSize.width/2) {
             return YES;
         }
     } else if (gestureRecognizer == gestureRecognizerRight){
-        if ([touch locationInView:self.view].x >= screenBounds.size.width/2) {
+        if ([touch locationInView:self.view].x >= screenSize.width/2) {
             return YES;
         }
-    } else if(gestureRecognizer == gestureRecognizerMenu){
+    }
+    else if(gestureRecognizer == gestureRecognizerMenu){
         return YES;
     }
-    
     return NO;
 }
 
 - (BOOL)gestureRecognizerShouldMove:(UIGestureRecognizer *)gestureRecognizer{
-    
-    if (gestureRecognizerMenu.numberOfTouches == 1) {
-        if (gestureRecognizer == gestureRecognizerLeft) {
-            [self startLeft];
-            return YES;
+    if (gestureRecognizer.numberOfTouches != 1){
+        CGPoint touchA = [gestureRecognizer locationOfTouch:0 inView:self.view];
+        CGPoint touchB = [gestureRecognizer locationOfTouch:1 inView:self.view];
+        CGFloat distance = distanceBetweenPoints(touchA, touchB);
+        if (distance < distanceTrigger){
+            rightWheel.alpha = 0;
+            leftWheel.alpha = 0;
+            isShowMenu = YES;
+            gestureRecognizerLeft.enabled = NO;
+            gestureRecognizerRight.enabled = NO;
+            menuView.center = touchA;
+            if (!eracerSet)
+                [menuView setImage:[UIImage imageNamed:@"eracerEmpty.png"]];
+            else
+                [menuView setImage:[UIImage imageNamed:@"penEmpty.png"]];
+            return NO;
         }
-        if (gestureRecognizer == gestureRecognizerRight) {
-            [self startRight];
-            return YES;
-        }
-        if (gestureRecognizer == gestureRecognizerMenu) {
+    }
+    if (gestureRecognizerLeft.numberOfTouches == 1 && gestureRecognizerRight.numberOfTouches == 1) {
+        CGPoint touchA = [gestureRecognizerLeft locationOfTouch:0 inView:self.view];
+        CGPoint touchB = [gestureRecognizerRight locationOfTouch:0 inView:self.view];
+        CGFloat distance = distanceBetweenPoints(touchA, touchB);
+        if (distance < distanceTrigger){
+            rightWheel.alpha = 0;
+            leftWheel.alpha = 0;
+            isShowMenu = YES;
+            gestureRecognizerLeft.enabled = NO;
+            gestureRecognizerRight.enabled = NO;
+            menuView.center = touchA;
+            if (!eracerSet)
+                [menuView setImage:[UIImage imageNamed:@"eracerEmpty.png"]];
+            else
+                [menuView setImage:[UIImage imageNamed:@"penEmpty.png"]];
             return NO;
         }
     }
     
-    if (gestureRecognizerMenu.numberOfTouches == 2){
-        CGPoint touchA = [gestureRecognizerMenu locationOfTouch:0 inView:self.view];
-        CGPoint touchB = [gestureRecognizerMenu locationOfTouch:1 inView:self.view];
-        CGFloat distance = distanceBetweenPoints(touchA, touchB);
-        
-        NSLog(@"%f", distance);
-        
-        if (distance < distanceTrigger) {
-            if (gestureRecognizer == gestureRecognizerLeft) {
-                return NO;
-            }
-            if (gestureRecognizer == gestureRecognizerRight) {
-                return NO;
-            }
-            if (gestureRecognizer == gestureRecognizerMenu) {
-                return YES;
-            }
-        } else {
-            if (gestureRecognizer == gestureRecognizerLeft) {
-                [self startLeft];
-                return YES;
-            }
-            if (gestureRecognizer == gestureRecognizerRight) {
-                [self startRight];
-                return YES;
-            }
-            if (gestureRecognizer == gestureRecognizerMenu) {
-                return NO;
-            }
-        }
-    }
-    return NO;
+    if (gestureRecognizer == gestureRecognizerLeft)
+        [self startLeft];
+    if (gestureRecognizer == gestureRecognizerRight)
+        [self startRight];
+    return YES;
 }
 
 - (void) startLeft {
-    [controllersTimer invalidate];
-    controllersTimer=[NSTimer scheduledTimerWithTimeInterval:controllersHideShowTime target:self selector:@selector(hideControllers) userInfo:nil repeats:NO];
-    
     [UIView animateWithDuration:0.5 animations:^{leftWheel.alpha = 1;}];
     leftWheel.center = CGPointMake([gestureRecognizerLeft locationInView:self.view].x- leftWheel.bounds.size.width/2, [gestureRecognizerLeft locationInView:self.view].y);
     leftWheel.transform = CGAffineTransformMakeRotation(0);
@@ -164,9 +154,6 @@
 }
 
 -(void) startRight{
-    [controllersTimer invalidate];
-    controllersTimer=[NSTimer scheduledTimerWithTimeInterval:controllersHideShowTime target:self selector:@selector(hideControllers) userInfo:nil repeats:NO];
-    
     [UIView animateWithDuration:0.5 animations:^{rightWheel.alpha = 1;}];
     rightWheel.center = CGPointMake([gestureRecognizerRight locationInView:self.view].x- rightWheel.bounds.size.width/2, [gestureRecognizerRight locationInView:self.view].y);
     rightWheel.transform = CGAffineTransformMakeRotation(0);
@@ -175,44 +162,74 @@
                             outerRadius: outRadius];
 }
 
-- (void) moviedToSector:(Byte)sector{
-    menuView.center = gestureRecognizerMenu.menuCenter;
-    if (!eracerSet) {
-        if (sector == Center)
-            [menuView setImage:[UIImage imageNamed:@"eracerEmpty.png"]];
-        if (sector == Up)
-            [menuView setImage:[UIImage imageNamed:@"eracerEracer.png"]];
-        if (sector == Right)
-            [menuView setImage:[UIImage imageNamed:@"eracerSave.png"]];
-        if (sector == Down)
-            [menuView setImage:[UIImage imageNamed:@"eracerClear.png"]];
-        if (sector == Left)
-            [menuView setImage:[UIImage imageNamed:@"eracerLoad.png"]];
-    } else{
-        if (sector == Center)
-            [menuView setImage:[UIImage imageNamed:@"penPen.png"]];
-        if (sector == Up)
-            [menuView setImage:[UIImage imageNamed:@"penEracer.png"]];
-        if (sector == Right)
-            [menuView setImage:[UIImage imageNamed:@"penSave.png"]];
-        if (sector == Down)
-            [menuView setImage:[UIImage imageNamed:@"penClear.png"]];
-        if (sector == Left)
-            [menuView setImage:[UIImage imageNamed:@"penLoad.png"]];
+- (void) onMenuTap:(UITapGestureRecognizer *)gestureRecognizer {
+    if (isShowMenu){
+        Byte sector;
+        CGFloat angle = angleBetweenLinesInDegrees(menuView.center, CGPointMake(menuView.center.x+100, menuView.center.y), menuView.center, [gestureRecognizer locationInView: self.view]);
+        if (angle <= - 45){
+            sector = Up;
+        }else if (angle > - 45 && angle <= 45){
+            sector = Right;
+        }else if (angle > 45 && angle <= 135){
+            sector = Down;
+        }else
+        {
+            sector = Left;
+        }
+        
+        CGFloat distance = distanceBetweenPoints(menuView.center, [gestureRecognizer locationInView: self.view]);
+        if (distance < 100.0f){
+            if (!eracerSet) {
+                if (sector == Up)
+                    [menuView setImage:[UIImage imageNamed:@"eracerEracer.png"]];
+                if (sector == Right)
+                    [menuView setImage:[UIImage imageNamed:@"eracerSave.png"]];
+                if (sector == Down)
+                    [menuView setImage:[UIImage imageNamed:@"eracerClear.png"]];
+                if (sector == Left)
+                    [menuView setImage:[UIImage imageNamed:@"eracerLoad.png"]];
+            } else{
+                if (sector == Up)
+                    [menuView setImage:[UIImage imageNamed:@"penPen.png"]];
+                if (sector == Right)
+                    [menuView setImage:[UIImage imageNamed:@"penSave.png"]];
+                if (sector == Down)
+                    [menuView setImage:[UIImage imageNamed:@"penClear.png"]];
+                if (sector == Left)
+                    [menuView setImage:[UIImage imageNamed:@"penLoad.png"]];
+            }
+        }
+        
+        [UIView animateWithDuration:.2 animations:^{
+            menuView.alpha = 0;
+                    } completion:^(BOOL finished){
+            [menuView setImage:nil];
+            menuView.alpha=1;
+            if (distance < 100.0f){
+                if (sector == Up)
+                    [self eracer];
+                if (sector == Right)
+                    [self savePicture];
+                if (sector == Down)
+                    [self clearScreen];
+                if (sector == Left)
+                    [self loadPicture];
+            }
+            isShowMenu = NO;
+            gestureRecognizerLeft.enabled = YES;
+            gestureRecognizerRight.enabled = YES;
+        }];
     }
-    
 }
 
--(void) finishedInSector:(Byte)sector{
-    [menuView setImage:nil];
-    if (sector == Up)
-        [self eracer];
-    if (sector == Right)
-        [self savePicture];
-    if (sector == Down)
-        [self clearScreen];
-    if (sector == Left)
-        [self loadPicture];
+-(void) onHelpTap: (UITapGestureRecognizer*) tapGestureRecognizer {
+    [self.helpImageView removeFromSuperview];
+    gestureRecognizerLeft.enabled = YES;
+    gestureRecognizerRight.enabled = YES;
+    gestureRecognizerMenu.enabled = YES;
+    tapGestureRecognizer.enabled = NO;
+    cursor.hidden = NO;
+    cursorTimer=[NSTimer scheduledTimerWithTimeInterval:cursorHideShowTime target:self selector:@selector(cursorHideShow) userInfo:nil repeats:YES];
 }
 
 - (void) willRotateAndConvert: (CGFloat) angle : (NDARotationGestureRecognizer *) gestureRecognizer{
@@ -238,6 +255,9 @@
         }}
     [self drawToPoint:drawToPoint];
     [self setCursorPosition:drawToPoint];
+    
+    [controllersTimer invalidate];
+    controllersTimer=[NSTimer scheduledTimerWithTimeInterval:controllersHideShowTime target:self selector:@selector(hideControllers) userInfo:nil repeats:NO];
 }
 
 #pragma mark - Painting methods
@@ -287,11 +307,7 @@
 - (void) savePicture {
     UIImageWriteToSavedPhotosAlbum(paintingImageView.image, nil, nil, nil );
     
-    NSURL *fileURL = [NSURL URLWithString:@"/System/Library/Audio/UISounds/Modern/camera_shutter_burst.caf"];
-    SystemSoundID soundID;
-    AudioServicesCreateSystemSoundID((__bridge_retained  CFURLRef)fileURL, &soundID);
-    AudioServicesPlaySystemSound(soundID);
-    AudioServicesDisposeSystemSoundID(soundID);
+    AudioServicesPlaySystemSound(1108);
     
     UIView * flash = [[UIView alloc] initWithFrame:self.view.bounds];
     flash.backgroundColor = [UIColor whiteColor];
@@ -337,7 +353,7 @@
 }
 
 -(CGPoint) checkForScreenOutRight:(CGPoint) checkPoint{
-    if (checkPoint.x+1>screenBounds.size.width-moveFactor) {
+    if (checkPoint.x+1>screenSize.width-moveFactor) {
         return checkPoint;
     } else {
         return checkPoint=CGPointMake(checkPoint.x+moveFactor, checkPoint.y);
@@ -353,7 +369,7 @@
 }
 
 -(CGPoint) checkForScreenOutDown:(CGPoint) checkPoint{
-    if (checkPoint.y+1>screenBounds.size.height-moveFactor) {
+    if (checkPoint.y+1>screenSize.height-moveFactor) {
         return checkPoint;
     } else {
         return checkPoint=CGPointMake(checkPoint.x, checkPoint.y+moveFactor);
@@ -361,7 +377,7 @@
 }
 
 -(CGPoint) checkForScreenOutUp:(CGPoint) checkPoint{
-    if (checkPoint.y+1<moveFactor) {
+    if (checkPoint.y-1<moveFactor) {
         return checkPoint;
     } else {
         return checkPoint=CGPointMake(checkPoint.x, checkPoint.y-moveFactor);
