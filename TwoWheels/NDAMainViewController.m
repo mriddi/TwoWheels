@@ -11,7 +11,6 @@
 @synthesize cursor;
 @synthesize leftWheel;
 @synthesize rightWheel;
-@synthesize paintingImageView;
 @synthesize menuView;
 
 #pragma mark - View lifecycle
@@ -253,12 +252,21 @@
             bufferAngleLeft=0;
             drawToPoint=[self checkForScreenOutLeft:drawToPoint];
         }}
-    [self drawToPoint:drawToPoint];
+
+    
+    
+    _paintingView.lastPoint =lastPoint;
+    _paintingView.drawToPoint = drawToPoint;
+    
+    [_paintingView drawToCache];
+    lastPoint = drawToPoint;
+    
     [self setCursorPosition:drawToPoint];
     
     [controllersTimer invalidate];
     controllersTimer=[NSTimer scheduledTimerWithTimeInterval:controllersHideShowTime target:self selector:@selector(hideControllers) userInfo:nil repeats:NO];
 }
+
 
 #pragma mark - Painting methods
 
@@ -273,25 +281,6 @@
     cursor.frame = CGRectMake(currentPoint.x-cursor.frame.size.width/2, currentPoint.y-cursor.frame.size.height/2, cursor.frame.size.width, cursor.frame.size.height);
 }
 
--(void) drawToPoint : (CGPoint) point{
-    UIGraphicsBeginImageContext(self.view.bounds.size);
-    [paintingImageView.image drawInRect: self.view.bounds];
-    
-    CGContextMoveToPoint(UIGraphicsGetCurrentContext(), lastPoint.x, lastPoint.y);
-    CGContextAddLineToPoint(UIGraphicsGetCurrentContext(), point.x, point.y);
-    
-    CGContextSetLineWidth(UIGraphicsGetCurrentContext(), moveFactor );
-    if (eracerSet) 
-        CGContextSetRGBStrokeColor(UIGraphicsGetCurrentContext(), 1.0, 1.0, 1.0, 1.0);
-    else
-        CGContextSetRGBStrokeColor(UIGraphicsGetCurrentContext(), 0.0, 0.0, 0.0, 1.0);
-    CGContextSetBlendMode(UIGraphicsGetCurrentContext(),kCGBlendModeNormal);
-    CGContextStrokePath(UIGraphicsGetCurrentContext());
-    paintingImageView.image=UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    lastPoint=point;
-}
-
 #pragma mark - Menu methods
 
 
@@ -300,12 +289,13 @@
     bufferAngleRight = 0;
     lastPoint= centerPoint;
     drawToPoint = centerPoint;
-    paintingImageView.image=nil;
     [UIView animateWithDuration:0.5 animations:^{[self setCursorPosition:centerPoint];}];
 }
 
 - (void) savePicture {
-    UIImageWriteToSavedPhotosAlbum(paintingImageView.image, nil, nil, nil );
+
+    
+    UIImageWriteToSavedPhotosAlbum([UIImage imageWithCGImage:CGBitmapContextCreateImage(_paintingView.cacheContext)], nil, nil, nil );
     
     AudioServicesPlaySystemSound(1108);
     
@@ -339,7 +329,7 @@
          didFinishPickingImage:(UIImage *)image
                    editingInfo:(NSDictionary *)editingInfo
 {
-    paintingImageView.image = image;
+    CGContextDrawImage(_paintingView.cacheContext, self.view.bounds, image.CGImage);
     [self dismissModalViewControllerAnimated:YES];
 }
 

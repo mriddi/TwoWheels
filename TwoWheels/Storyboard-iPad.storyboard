@@ -13,9 +13,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="lit-pH-17r">
+                            <view contentMode="scaleToFill" id="qbr-fL-uf0" customClass="BIDView">
                                 <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
-                            </imageView>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Wheel.png" id="eHo-0K-t87">
                                 <rect key="frame" x="20" y="635" width="112" height="113"/>
                             </imageView>
@@ -40,7 +42,7 @@
                         <outlet property="cursor" destination="efe-VI-xaA" id="hua-aI-HaZ"/>
                         <outlet property="leftWheel" destination="eHo-0K-t87" id="XFU-fS-76T"/>
                         <outlet property="menuView" destination="Vi1-RN-ELv" id="A2n-ul-8KN"/>
-                        <outlet property="paintingImageView" destination="lit-pH-17r" id="Z1a-tx-Xai"/>
+                        <outlet property="paintingView" destination="qbr-fL-uf0" id="BfE-4L-AD7"/>
                         <outlet property="rightWheel" destination="cA8-Ze-by8" id="M3d-hK-CV0"/>
                     </connections>
                 </viewController>
