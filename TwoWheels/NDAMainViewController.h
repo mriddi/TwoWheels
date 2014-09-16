@@ -6,7 +6,6 @@
 #import <UIKit/UIKit.h>
 #import "NDARotationGestureRecognizer.h"
 #import <AudioToolbox/AudioToolbox.h>
-#import "BIDView.h"
 
 
 #define degreeInPoint 2.25
@@ -37,8 +36,6 @@
 typedef NS_ENUM(NSInteger, MenuSector) {
     Center,Up,Right,Down,Left
 };
-
-@property (strong, nonatomic) IBOutlet BIDView *paintingView;
 
 @property (strong, nonatomic)  UIImageView *helpImageView;
 @property (strong, nonatomic) IBOutlet UIImageView *cursor;
