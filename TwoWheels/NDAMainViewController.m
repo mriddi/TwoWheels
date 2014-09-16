@@ -16,17 +16,17 @@
 
 #pragma mark - View lifecycle
 
--(BOOL) prefersStatusBarHidden{
-    return YES;
-}
+//-(BOOL) prefersStatusBarHidden{
+//    return YES;
+//}
 
-- (NSUInteger)supportedInterfaceOrientations{
-    return UIInterfaceOrientationMaskLandscape;
-}
+//- (NSUInteger)supportedInterfaceOrientations{
+//    return UIInterfaceOrientationMaskLandscape;
+//}
 
--  (BOOL)shouldAutorotate {
-    return YES;
-}
+//-  (BOOL)shouldAutorotate {
+//    return YES;
+//}
 
 
 - (void) viewDidLoad{
@@ -64,6 +64,7 @@
 }
 
 -  (void)viewDidAppear:(BOOL)animated{
+    [self.view setNeedsDisplayInRect:self.view.bounds];
     bufferAngleLeft = 0;
     bufferAngleRight = 0;
     eracerSet=NO;
@@ -253,7 +254,13 @@
             bufferAngleLeft=0;
             drawToPoint=[self checkForScreenOutLeft:drawToPoint];
         }}
-    [self drawToPoint:drawToPoint];
+    
+    _paintingView.drawToPoint = drawToPoint;
+    _paintingView.lastPoint = lastPoint;
+    [_paintingView setNeedsDisplay];
+    lastPoint = drawToPoint;
+//    [self drawToPoint:drawToPoint];
+
     [self setCursorPosition:drawToPoint];
     
     [controllersTimer invalidate];
@@ -273,24 +280,24 @@
     cursor.frame = CGRectMake(currentPoint.x-cursor.frame.size.width/2, currentPoint.y-cursor.frame.size.height/2, cursor.frame.size.width, cursor.frame.size.height);
 }
 
--(void) drawToPoint : (CGPoint) point{
-    UIGraphicsBeginImageContext(self.view.bounds.size);
-    [paintingImageView.image drawInRect: self.view.bounds];
-    
-    CGContextMoveToPoint(UIGraphicsGetCurrentContext(), lastPoint.x, lastPoint.y);
-    CGContextAddLineToPoint(UIGraphicsGetCurrentContext(), point.x, point.y);
-    
-    CGContextSetLineWidth(UIGraphicsGetCurrentContext(), moveFactor );
-    if (eracerSet) 
-        CGContextSetRGBStrokeColor(UIGraphicsGetCurrentContext(), 1.0, 1.0, 1.0, 1.0);
-    else
-        CGContextSetRGBStrokeColor(UIGraphicsGetCurrentContext(), 0.0, 0.0, 0.0, 1.0);
-    CGContextSetBlendMode(UIGraphicsGetCurrentContext(),kCGBlendModeNormal);
-    CGContextStrokePath(UIGraphicsGetCurrentContext());
-    paintingImageView.image=UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    lastPoint=point;
-}
+//-(void) drawToPoint : (CGPoint) point{
+//    UIGraphicsBeginImageContext(self.view.bounds.size);
+//    [paintingImageView.image drawInRect: self.view.bounds];
+//    
+//    CGContextMoveToPoint(UIGraphicsGetCurrentContext(), lastPoint.x, lastPoint.y);
+//    CGContextAddLineToPoint(UIGraphicsGetCurrentContext(), point.x, point.y);
+//    
+//    CGContextSetLineWidth(UIGraphicsGetCurrentContext(), moveFactor );
+//    if (eracerSet) 
+//        CGContextSetRGBStrokeColor(UIGraphicsGetCurrentContext(), 1.0, 1.0, 1.0, 1.0);
+//    else
+//        CGContextSetRGBStrokeColor(UIGraphicsGetCurrentContext(), 0.0, 0.0, 0.0, 1.0);
+//    CGContextSetBlendMode(UIGraphicsGetCurrentContext(),kCGBlendModeNormal);
+//    CGContextStrokePath(UIGraphicsGetCurrentContext());
+//    paintingImageView.image=UIGraphicsGetImageFromCurrentImageContext();
+//    UIGraphicsEndImageContext();
+//    lastPoint=point;
+//}
 
 #pragma mark - Menu methods
 

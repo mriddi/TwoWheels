@@ -37,6 +37,7 @@
 		246A9E8019B079D0009203C7 /* penSave.png in Resources */ = {isa = PBXBuildFile; fileRef = 246A9E7519B079D0009203C7 /* penSave.png */; };
 		246A9E8119B079D0009203C7 /* Wheel.png in Resources */ = {isa = PBXBuildFile; fileRef = 246A9E7619B079D0009203C7 /* Wheel.png */; };
 		2477AAD219AF2D1200128855 /* NDAMath.m in Sources */ = {isa = PBXBuildFile; fileRef = 2477AAD119AF2D1200128855 /* NDAMath.m */; };
+		24A0F2BB19C8AAB50042C65E /* BIDView.m in Sources */ = {isa = PBXBuildFile; fileRef = 24A0F2BA19C8AAB50042C65E /* BIDView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -77,6 +78,8 @@
 		246A9E7619B079D0009203C7 /* Wheel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Wheel.png; sourceTree = "<group>"; };
 		2477AAD019AF2D1200128855 /* NDAMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDAMath.h; sourceTree = "<group>"; };
 		2477AAD119AF2D1200128855 /* NDAMath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NDAMath.m; sourceTree = "<group>"; };
+		24A0F2B919C8AAB50042C65E /* BIDView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BIDView.h; sourceTree = "<group>"; };
+		24A0F2BA19C8AAB50042C65E /* BIDView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BIDView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +135,8 @@
 				24056AD4168038760036D33D /* NDARotationGestureRecognizer.m */,
 				24056AD5168038760036D33D /* NDAMainViewController.h */,
 				24056AD6168038760036D33D /* NDAMainViewController.m */,
+				24A0F2B919C8AAB50042C65E /* BIDView.h */,
+				24A0F2BA19C8AAB50042C65E /* BIDView.m */,
 				24056AC3168038070036D33D /* BIDAppDelegate.h */,
 				24056AC4168038070036D33D /* BIDAppDelegate.m */,
 				2477AAD019AF2D1200128855 /* NDAMath.h */,
@@ -269,6 +274,7 @@
 			files = (
 				24056AC1168038070036D33D /* main.m in Sources */,
 				24056AC5168038070036D33D /* BIDAppDelegate.m in Sources */,
+				24A0F2BB19C8AAB50042C65E /* BIDView.m in Sources */,
 				2477AAD219AF2D1200128855 /* NDAMath.m in Sources */,
 				24056AD9168038760036D33D /* NDARotationGestureRecognizer.m in Sources */,
 				24056ADA168038760036D33D /* NDAMainViewController.m in Sources */,

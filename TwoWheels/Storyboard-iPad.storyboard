@@ -9,50 +9,21 @@
         <scene sceneID="i51-WF-wVl">
             <objects>
                 <viewController id="I7A-ec-r7C" customClass="NDAMainViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="zA4-08-mRZ">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="lit-pH-17r">
-                                <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Wheel.png" id="eHo-0K-t87">
-                                <rect key="frame" x="20" y="635" width="112" height="113"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Wheel.png" id="cA8-Ze-by8">
-                                <rect key="frame" x="892" y="635" width="112" height="113"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Cursor.png" id="efe-VI-xaA">
-                                <rect key="frame" x="456" y="201" width="4" height="4"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="Vi1-RN-ELv">
-                                <rect key="frame" x="426" y="48" width="112" height="113"/>
-                            </imageView>
-                        </subviews>
+                    <view key="view" autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="zA4-08-mRZ" customClass="BIDView">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
-                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
-                    <connections>
-                        <outlet property="cursor" destination="efe-VI-xaA" id="hua-aI-HaZ"/>
-                        <outlet property="leftWheel" destination="eHo-0K-t87" id="XFU-fS-76T"/>
-                        <outlet property="menuView" destination="Vi1-RN-ELv" id="A2n-ul-8KN"/>
-                        <outlet property="paintingImageView" destination="lit-pH-17r" id="Z1a-tx-Xai"/>
-                        <outlet property="rightWheel" destination="cA8-Ze-by8" id="M3d-hK-CV0"/>
-                    </connections>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u0F-nP-ZiY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="521" y="149"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="Cursor.png" width="3" height="3"/>
-        <image name="Wheel.png" width="226" height="226"/>
-    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
